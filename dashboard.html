@@ -10,37 +10,6 @@
         <link rel="stylesheet" href="css/dashboard.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js"></script>
     </head>
-    <style>
-        #send_message {    
-            transition: .6s ease-in-out;
-        }
-
-        .rigth-300 {
-            right: -330px;
-        }
-
-        .grapic {
-            width: 700px;
-            height: 100px;
-            position: absolute;
-            top:350px;
-            margin-left: 350px;
-        }
-
-        @media screen and (max-width: 768px) {
-            .grapic {
-                width: 300px;
-                height: 200px;
-                position: absolute;
-                top: 700px;
-                margin-left: 50px;
-            }
-
-            .grapic canvas {
-                height: 70px;
-            }
-        }
-    </style>
     <body>
         <section class="flex flex-row">
             <div class="absolute top-5 left-10 w-14 h-14 rounded-full flex justify-center items-center shadow z-10 block md:hidden cursor-pointer hover:bg-green-300 toggle-180" id="toggle">
@@ -95,8 +64,8 @@
             </button>
 
             <div class="mt-24 md:mt-0 ml-10 md:ml-20">
-                <h1 class="mt-10 mb-10 font-semibold text-2xl text-gray-600">Dashboard</h1>
-                <div class="flex flex-col md:flex-row justify-center items-center">
+                <h1 class="hidden md:block mt-10 mb-10 font-semibold text-2xl text-gray-600">Dashboard</h1>
+                <div class="mt-10 md:mt-0 flex flex-col md:flex-row justify-center items-center">
                     <div class="flex flex-row justify-center items-center text-center shadow border-l-4 border-green-300 py-10 w-72 h-20 mr-0 md:mr-5">
                         <h3 class="text-2xl text-green-900 font-bold pr-10 hidden">Entrada</h3>
                         <p class="pt-1 text-2xl text-green-500 font-semibold">+ R$30.000</p>
@@ -237,7 +206,9 @@
                             100,
                             130,
                             14,
-                            19
+                            19,
+                            60,
+                            78
                         ]
                     }]
                 }

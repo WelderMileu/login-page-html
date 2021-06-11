@@ -1,24 +1,22 @@
-const menu = document.getElementById('menu');
-const toggle_menu = document.getElementById('toggle');
+const $ = e => document.querySelector(e);
 
-document.getElementById('signout').addEventListener('click', () => {
-    location.href = '/'
-})
+// Função de toggle do menu na versao mobile.
+const toggle_menu = () => {
+    if ($('#menu').classList.contains('hidden-menu')) {
+        $('#menu').classList.remove('hidden-menu')
+        $('#menu').classList.add('active-menu')
 
-const toggle = () => {
-    if (menu.classList.contains('hidden-menu')) {
-        menu.classList.remove('hidden-menu')
-        menu.classList.add('active-menu')
-
-        toggle_menu.classList.remove('toggle-180')
-        toggle_menu.classList.add('toggle-0')
+        $('#toggle').classList.remove('toggle-180')
+        $('#toggle').classList.add('toggle-0')
     } else {
-        menu.classList.add('hidden-menu')
-        menu.classList.remove('active-menu')
+        $('#menu').classList.add('hidden-menu')
+        $('#menu').classList.remove('active-menu')
 
-        toggle_menu.classList.add('toggle-180')
-        toggle_menu.classList.remove('toggle-0')
+        $('#toggle').classList.add('toggle-180')
+        $('#toggle').classList.remove('toggle-0')
     }
 }
 
-document.getElementById('toggle').addEventListener('click', toggle)
+// Evento para redirecionar o usario para nossa pagina de login.
+$('#signout').addEventListener('click', () => location.href = '/');
+$('#toggle').addEventListener('click', toggle_menu)
