@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="css/dashboard.css">
+    </head>
+    <style>
+        #send_message {    
+            transition: .6s ease-in-out;
+        }
+
+        .rigth-300 {
+            right: -330px;
+        }
+
+    </style>
+    <body>
+        <section class="flex flex-row">
+            <div class="absolute top-5 left-10 w-14 h-14 bg-green-400 rounded-full flex justify-center items-center shadow z-10 block md:hidden cursor-pointer hover:bg-green-300 toggle-180" id="toggle">
+                <i class="fas fa-angle-left text-white text-4xl"></i>
+            </div>
+
+            <article class="bg-white h-screen min-w-lg w-64 md:w-72 flex flex-col absolute md:relative hidden-menu shadow" id="menu">
+                <div class="pt-10">
+                    <div class="flex flex-col items-center">
+                        <div class="border boder-gray-500 w-20 h-20 rounded-full flex justify-center items-center">
+                            <img src="logo.svg" alt="user" class="w-7">
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <h3 class="text-lg mt-4 font-semibold text-gray-600">Sytem user</h3>
+                            <span class="text-md text-gray-500 pt-1">CTO - System administration</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <ul>
+                        <li class="flex flex-row items-center border-r-4 border-green-300 py-2 px-5 bg-gray-100 my-3">
+                            <div class="w-10 h-10 flex justify-center items-center rounded-full">
+                                <i class="fas fa-user text-xl text-green-500"></i>
+                            </div>
+                            <p class="text-gray-700 pl-3">User Settings</p>
+                        </li>
+                        <li class="flex flex-row items-center py-2 px-5 my-3">
+                            <div class="w-10 h-10 flex justify-center items-center rounded-full">
+                                <i class="fas fa-comments-dollar text-xl text-green-500"></i>
+                            </div>
+                            <p class="text-gray-700 pl-3">Saldo money</p>
+                        </li>
+                        <li class="flex flex-row items-center py-2 px-5 my-3">
+                            <div class="w-10 h-10 flex justify-center items-center rounded-full">
+                                <i class="fas fa-archive text-xl text-green-500"></i>
+                            </div>
+                            <p class="text-gray-700 pl-3">Archive</p>
+                        </li>
+                        <li class="flex flex-row items-center py-2 px-5 my-3">
+                            <div class="w-10 h-10 flex justify-center items-center rounded-full">
+                                <i class="fas fa-cogs text-xl text-green-500"></i>
+                            </div>
+                            <p class="text-gray-700 pl-3">Configuration account</p>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+            <button id="signout" class="px-4 py-2 bg-green-400 text-white font-semibold absolute top-5 right-10 rounded-lg shadow hover:bg-green-300">
+                Sign Out
+                <i class="fas fa-sign-out-alt pl-2 text-lg"></i>
+            </button>
+
+            <div class="mt-24 md:mt-5 ml-20">
+                <h1 class="mt-10 mb-10 font-semibold text-2xl text-gray-600">Dashboard</h1>
+                <div class="flex flex-col md:flex-row justify-center items-center">
+                    <div class="flex flex-row justify-center items-center text-center shadow border-l-4 border-green-300 py-10 w-72 h-20 mr-0 md:mr-5">
+                        <h3 class="text-2xl text-green-900 font-bold pr-10 hidden">Entrada</h3>
+                        <p class="pt-1 text-2xl text-green-500 font-semibold">+ R$30.000</p>
+                    </div>
+                    <div class="flex flex-col justify-center items-center text-center shadow border-l-4 border-red-300 py-10 w-72 h-20 mt-3 md:mt-0">
+                        <h3 class="text-2xl text-red-600 font-bold hidden">Saida</h3>
+                        <p class="pt-1 text-2xl text-red-500 font-bold">- R$1.020</p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <div class="flex flex-col md:flex-row justify-center items-center">
+                        <input id="input" type="text" placeholder="Escreva ..." class="w-full border border-gray-100 pl-5 py-2 rounded md:rounded-l outline-none shadow text-gray-400">
+                        <div class="flex flex-row ml-0 md:ml-5 mt-5 mb-5 md:mt-0 md:mb-0">
+                            <div class="flex flex-row">
+                                <input type="radio" id="receita" value="receita" name="tipo" checked>
+                                <label for="receita" class="pl-2 text-gray-500">Receita</label>
+                            </div>
+                            <div class="flex flex-row ml-5">
+                                <input type="radio" id="despesa" value="despesa" name="tipo">
+                                <label for="despesa" class="pl-2 text-gray-500">Despesa</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="submit" class="w-full md:w-36 mt-3 py-2 px-4 bg-green-400 text-white text-lg font-bold shadow rounded hover:bg-green-300">
+                        Adicionar
+                    </button>
+                </div>
+            </div>
+
+            <div id="send_message"class="fixed shadow border-l-4 border-green-500 py-3 pl-5 pr-16 bg-white top-36 rigth-300">
+                <div class="flex flex-row items-center text-green-500">
+                    <i class="fas fa-check-circle pr-2"></i>
+                    <h2 class="font-semibold">Success!</h2>
+                </div>
+                <p class="pl-6 text-gray-400">Message popup</div>
+            </div>
+
+        </section>
+        <script src="script/dashboard.js"></script>
+        <script>
+            const submit = document.getElementById('submit');
+            const send_message = document.getElementById('send_message');
+            const input = document.getElementById('input');
+
+            let scop_title = send_message.children[0];
+            let title = send_message.children[0].children[1];
+            let icon = send_message.children[0].children[0];
+            let message = send_message.children[1];
+
+            function send_message_box(msg, status, description) {
+                message.innerHTML = msg;
+                title.innerHTML = description;
+                
+                if (status === 1) {
+                    icon.classList.remove('fa-info-circle');
+                    icon.classList.add('fa-check-circle');
+                    
+                    send_message.classList.add('border-green-500');
+                    send_message.classList.remove('border-red-500');
+
+                    scop_title.classList.add('text-green-500');
+                    scop_title.classList.remove('text-red-500');
+                } else {
+                    icon.classList.add('fa-info-circle');
+                    icon.classList.remove('fa-check-circle');
+
+                    send_message.classList.remove('border-green-500');
+                    send_message.classList.add('border-red-500');
+
+                    scop_title.classList.remove('text-green-500');
+                    scop_title.classList.add('text-red-500');
+                }
+            }
+
+            function submit_required() {
+                send_message.classList.remove('rigth-300');
+                send_message.classList.add('right-5');
+
+                if(input.value === "") {
+                    send_message_box("Erro ao tentar adicionar item.", 0, "Warnning!")
+                } else {
+                    send_message_box("Item adicionado com sucesso!", 1, "Success!")                    
+                }
+
+                input.value = "";
+
+                setTimeout(() => {
+                    send_message.classList.add('rigth-300');
+                    send_message.classList.remove('right-5');
+                }, 4000)
+            }     
+
+            submit.addEventListener('click', () => {
+                setTimeout(() => {
+                    submit_required()
+                }, 300); 
+            })     
+        </script>
+    </body>
+</html>

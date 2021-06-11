@@ -1,0 +1,29 @@
+#menu {
+    transition: .8s ease-in-out;
+}
+
+#toggle {
+    transition: .8s ease-in-out;
+}
+
+.fa-angle-left {
+    padding-left: -20px;
+}
+
+@media screen and (max-width: 768px) {
+    .hidden-menu {
+        left: -500px !important; 
+    }
+
+    .active-menu {
+        left: 0;
+    }
+
+    .toggle-180 {
+        transform: rotate(180deg);
+    }
+
+    .toggle-0 {
+        transform: rotate(0deg);
+    }
+}
